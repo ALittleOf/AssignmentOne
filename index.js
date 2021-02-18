@@ -30,31 +30,35 @@ async function getData() {
 
             var table = document.getElementById("myTable")
              // Making Blank array in order to push datas later
-            let totalLotsArray = new Array();
-            let totalAvaArray = new Array();
+            // let totalLotsArray = new Array();
+            // let totalAvaArray = new Array();
             for (var i = 0; i < carparkData.length; i++){
                 // const carparkNum = carparkData[i].carpark_number
                 // console.log(carparkNum)
+                var x = (carparkData[i].carpark_info[0].total_lots - carparkData[i].carpark_info[0].lots_available) / (carparkData[i].carpark_info[0].total_lots)
+                var utiRate = Number(x).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 });
                 var row = `<tr>
                                 <td>${carparkData[i].carpark_number}</td>
                                 <td>${carparkData[i].update_datetime}</td>
                                 <td>${carparkData[i].carpark_info[0].lots_available}</td>
                                 <td>${carparkData[i].carpark_info[0].lot_type}</td>
                                 <td>${carparkData[i].carpark_info[0].total_lots}</td>
+                                <td>${utiRate}</td>
                           </tr>`
                 table.innerHTML += row
                 // Pushing Data to an array, parse as an integer for use in calculations
-                totalLotsArray.push(parseInt(carparkData[i].carpark_info[0].total_lots));
-                totalAvaArray.push(parseInt(carparkData[i].carpark_info[0].lots_available));
+                // totalLotsArray.push(parseInt(carparkData[i].carpark_info[0].total_lots));
+                // totalAvaArray.push(parseInt(carparkData[i].carpark_info[0].lots_available));
             }
             // Returning Array
-            return totalLotsArray, totalAvaArray;
+            // return totalLotsArray, totalAvaArray;
         } 
         throw new Error("Request failed");
-    } 
+        } 
         catch (error) {
         console.log(error);
         }
 } 
+getData();
 // Changing the way we call getData()
-getData().then(totalLots => console.log("total lots: ", totalLots)).then(totalAva => console.log("total available: ", totalAva));
+// getData().then(totalLots => console.log("total lots: ", totalLots)).then(totalAva => console.log("total available: ", totalAva));
