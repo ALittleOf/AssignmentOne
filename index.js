@@ -12,22 +12,7 @@ async function getData() {
         const response = await fetch ("https://api.data.gov.sg/v1/transport/carpark-availability");
         if (response.ok){
             const data = await response.json();
-            /*console.log (data);
-            console.log (typeof(data));
-            console.log(Object.keys(data).length) //length*/
             const carparkData = data.items[0].carpark_data;
-            // console.log(carparkData) //array of Objects
-            /*console.log (typeof(carparkData));
-            console.log(Object.keys(carparkData).length) //length
-            console.log(carparkData[0]); //first Object of array
-
-            console.log(carparkData[0].carpark_info);
-            console.log (typeof(carparkData[0].carpark_info));
-
-            console.log(carparkData[0].carpark_info[0].total_lots);
-            console.log(carparkData[0].carpark_info[0].lot_type);
-            console.log(carparkData[0].carpark_info[0].lots_available);*/
-
             var table = document.getElementById("myTable")
             for (var i = 0; i < carparkData.length; i++){
                 var x = (carparkData[i].carpark_info[0].total_lots - carparkData[i].carpark_info[0].lots_available) / (carparkData[i].carpark_info[0].total_lots)              
@@ -50,5 +35,3 @@ async function getData() {
         }
 } 
 getData();
-
-

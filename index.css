@@ -7,19 +7,15 @@ td{
 	background-color: #FAF7EF;
 }
 
-
-
 th{
 	text-align: center;
 	background-color: #FBD06A;
 	font-size: 22px;
 	text-transform: uppercase;
 	height: 50px;
-	/*position: fixed;*/
 }
 
 tr:hover td{
 	background-color: #000000;
 	color: #FFFFFF;
 }
-
