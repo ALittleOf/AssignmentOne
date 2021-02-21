@@ -35,17 +35,19 @@ async function getData() {
             for (var i = 0; i < carparkData.length; i++){
                 // const carparkNum = carparkData[i].carpark_number
                 // console.log(carparkNum)
-                var x = (carparkData[i].carpark_info[0].total_lots - carparkData[i].carpark_info[0].lots_available) / (carparkData[i].carpark_info[0].total_lots)
-                var utiRate = Number(x).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 });
-                var row = `<tr>
-                                <td>${carparkData[i].carpark_number}</td>
-                                <td>${carparkData[i].update_datetime}</td>
-                                <td>${carparkData[i].carpark_info[0].lots_available}</td>
-                                <td>${carparkData[i].carpark_info[0].lot_type}</td>
-                                <td>${carparkData[i].carpark_info[0].total_lots}</td>
-                                <td>${utiRate}</td>
-                          </tr>`
-                table.innerHTML += row
+                var x = (carparkData[i].carpark_info[0].total_lots - carparkData[i].carpark_info[0].lots_available) / (carparkData[i].carpark_info[0].total_lots)              
+                var utiRate = Number(x).toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 })
+                do{
+                    var row = `<tr>
+                                    <td>${carparkData[i].carpark_number}</td>
+                                    <td>${carparkData[i].update_datetime}</td>
+                                    <td>${carparkData[i].carpark_info[0].lots_available}</td>
+                                    <td>${carparkData[i].carpark_info[0].lot_type}</td>
+                                    <td>${carparkData[i].carpark_info[0].total_lots}</td>
+                                    <td>${utiRate}</td>
+                              </tr>`
+                    table.innerHTML += row
+                } while(carparkData[i].carpark_info[0].total_lots != 0);
                 // Pushing Data to an array, parse as an integer for use in calculations
                 // totalLotsArray.push(parseInt(carparkData[i].carpark_info[0].total_lots));
                 // totalAvaArray.push(parseInt(carparkData[i].carpark_info[0].lots_available));
