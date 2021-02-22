@@ -10,19 +10,21 @@ window.onload = () => {
 
 //get Data and append to HTML table
 async function getData() {
-    try {
-        const response = await fetch ("https://api.data.gov.sg/v1/transport/carpark-availability");
-        if (response.ok) {
-            const data = await response.json();
-            const carparkData = data.items[0].carpark_data;
-        }
-        return carparkData;
-    } catch (error) {console.log(error);}
+  try {
+    const response = await fetch("https://api.data.gov.sg/v1/transport/carpark-availability");
+    if (response.ok) {
+      const data = await response.json();
+      return data.items[0].carpark_data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
-getData();
 
 
-function addData() {
+getData()
+  .then(carparkData => {
+    // console.log(carparkData);
     var table = document.getElementById("myTable")
     for (var i = 0; i < carparkData.length; i++){
         var x = (carparkData[i].carpark_info[0].total_lots - carparkData[i].carpark_info[0].lots_available) / (carparkData[i].carpark_info[0].total_lots)              
@@ -37,6 +39,9 @@ function addData() {
                   </tr>`
         table.innerHTML += row
     }
-};
-addTable(carparkData);
+  })
+  .catch(err => {
+    console.log(err);
+});
+
 
