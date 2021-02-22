@@ -7,8 +7,7 @@ window.onload = () => {
     getData();
 }
 
-
-//get Data and append to HTML table
+//get Data 
 async function getData() {
   try {
     const response = await fetch("https://api.data.gov.sg/v1/transport/carpark-availability");
@@ -21,7 +20,7 @@ async function getData() {
   }
 };
 
-
+//appends to HTML table
 getData()
   .then(carparkData => {
     // console.log(carparkData);
@@ -43,5 +42,3 @@ getData()
   .catch(err => {
     console.log(err);
 });
-
-
