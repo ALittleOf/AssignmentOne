@@ -1,4 +1,4 @@
-// Assignment One
+// Assignment One (02.526 Interactive Data Visualisation)
 'use strict'
 
 // execute commands inside every time browser reloaded
