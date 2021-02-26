@@ -1,5 +1,3 @@
-// Assignment One (02.526 IDV)
-// Due: 25-Feb
 'use strict'
 
 // execute commands inside every time browser reloaded
